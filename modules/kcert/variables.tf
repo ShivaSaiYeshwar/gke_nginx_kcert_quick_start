@@ -38,7 +38,7 @@ variable "kcert_controller_chart" {
 variable "kcert_controller_chart_version" {
   type        = string
   description = "The helm chart version"
-  default     = "1.0.6"
+  default     = "1.0.7"
 }
 
 variable "kcert_controller_namespace" {
