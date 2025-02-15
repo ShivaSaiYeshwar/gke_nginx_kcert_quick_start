@@ -139,6 +139,7 @@ resource "google_container_cluster" "cluster" {
   project                  = var.k8s_project
   name                     = var.k8s_cluster_name
   location                 = var.k8s_cluster_location
+  deletion_protection      = false
   remove_default_node_pool = true
   initial_node_count       = 1
   network                  = google_compute_network.vpc.self_link
@@ -202,6 +203,7 @@ resource "google_service_account" "kubernetes_service_account" {
 
 resource "google_container_node_pool" "general" {
   name               = "general"
+  project            = var.k8s_project
   cluster            = google_container_cluster.cluster.id
   initial_node_count = var.k8s_tier_node_count
   version            = var.k8s_cluster_node_pool_version
